@@ -16,7 +16,7 @@ export default function Footer() {
       divider={<StackDivider />}
     >
       <Text>Simple & Open Source Word Counting App</Text>
-      <Link href='#'>
+      <Link href='https://github.com/Tyler-Huffman/word-counter-ts'>
         <Flex align='center' gap='3px'>
           <Text>View code / Report Bugs</Text> <Icon as={FaGithub} />
         </Flex>

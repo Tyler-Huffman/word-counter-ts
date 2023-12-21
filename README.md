@@ -1,5 +1,11 @@
 # React + TypeScript + Vite
 
+Word counter app made with react/typescript. build tool is vite hosted on vercel. 
+
+User can type or paste text in a text area. The left box displays the counts of words, characters, sentences and paragraphs. The box on the right displays the four most frequently occuring words along with their counts and percentage of occurance against the total. 
+
+/////
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
