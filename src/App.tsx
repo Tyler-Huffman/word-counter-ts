@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import WordCounter from './Components/WordCounter';
 import KeyWordCounter from './Components/KeyWordCounter';
 import { countWords, createWordHistogram } from './utils/CountingFunctions';

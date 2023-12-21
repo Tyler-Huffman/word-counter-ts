@@ -35,10 +35,7 @@ export function createWordHistogram(input: string): WordCount {
   return frequencyAnalysis;
 }
 
-export function calculatePercentage(
-  wordCount: number,
-  totalCount: number
-): number {
+export function getPercentage(wordCount: number, totalCount: number): number {
   const percent = (wordCount / totalCount) * 100;
   return Math.round(percent * 100) / 100;
 }
