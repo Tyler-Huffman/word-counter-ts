@@ -15,7 +15,7 @@ import {
 
 interface countElementProps {
   header: string;
-  value: string;
+  value: number;
 }
 
 function CountElement({ header, value }: countElementProps) {

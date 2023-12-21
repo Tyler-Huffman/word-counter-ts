@@ -21,12 +21,12 @@ export default function App() {
 
   // creates a sorted array of arrays with keyword histogram pairs
   //  with just top 4 keywords/values ie [['hello', 3]...]
-  const sortedKeywords = Object.entries(wordHistogram)
+  const sortedKeywords: [string, number][] = Object.entries(wordHistogram)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 4);
 
-  function handleTextInput(event: ChangeEvent<HTMLInputElement>) {
-    const text = (event.target as HTMLInputElement).value;
+  function handleTextInput(event: Event) {
+    const text: string = (event.target as HTMLInputElement).value;
     setUserText(text);
     setWordHistogram(createWordHistogram(text));
   }
@@ -36,9 +36,9 @@ export default function App() {
     setWordHistogram({});
   }
 
-  function copyWordCountToClipboard() {
-    const wordCount = countWords(userText);
-    navigator.clipboard.writeText(wordCount);
+  function copyWordCountToClipboard(): void {
+    const wordCount: number = countWords(userText);
+    navigator.clipboard.writeText(wordCount.toString());
     toast({
       title: 'Word Count Copied',
       description: `"${wordCount}" was copied to your clipboard!`,
@@ -77,7 +77,7 @@ export default function App() {
         w='80%'
         h='22.5rem'
         resize='none'
-        onChange={handleTextInput}
+        onChange={() => handleTextInput}
         focusBorderColor='rgb(49,130,206)'
       ></Textarea>
       <Flex justify='space-around' width='80%' marginBlock='25px'>
