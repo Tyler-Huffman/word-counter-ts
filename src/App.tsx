@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import WordCounter from './Components/WordCounter';
-import KeywordCounter from './Components/KeywordCounter';
+import KeyWordCounter from './Components/KeyWordCounter';
 import { countWords, createWordHistogram } from './utils/CountingFunctions';
 import {
   Flex,
@@ -23,7 +23,7 @@ export default function App() {
   //  with just top 4 keywords/values ie [['hello', 3]...]
 
   const keyWordValuePairs: [string, number][] = Object.entries(wordHistogram);
-  const sortedKeywords: [string, number][] = keyWordValuePairs
+  const sortedKeyWords: [string, number][] = keyWordValuePairs
     .sort(([, currValue], [, compValue]) => compValue - currValue)
     .slice(0, 4);
 
@@ -84,7 +84,7 @@ export default function App() {
       ></Textarea>
       <Flex justify='space-around' width='80%' marginBlock='25px'>
         <WordCounter userText={userText} />
-        <KeywordCounter sortedKeywords={sortedKeywords} userText={userText} />
+        <KeyWordCounter sortedKeyWords={sortedKeyWords} userText={userText} />
         <Footer />
       </Flex>
     </Flex>

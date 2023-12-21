@@ -16,16 +16,22 @@ export function countParagraphs(input: string): number {
   return paragraphs.length;
 }
 
-export function createWordHistogram(input: string): {} {
+type WordCount = { [key: string]: number };
+
+export function createWordHistogram(input: string): WordCount {
   const inputCleaned: string = input.replace(/[^a-zA-Z\s]/g, '');
   const words: string[] = inputCleaned
     .split(/[^a-zA-Z]/g)
     .filter((word) => word !== '')
     .map((word) => word.toUpperCase());
-  const frequencyAnalysis = words.reduce(function (counts: {}, curr: string) {
+  const frequencyAnalysis = words.reduce(function (
+    counts: WordCount,
+    curr: string
+  ) {
     curr in counts ? counts[curr]++ : (counts[curr] = 1);
     return counts;
-  }, {});
+  },
+  {});
   return frequencyAnalysis;
 }
 

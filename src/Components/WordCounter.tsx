@@ -13,12 +13,12 @@ import {
   countParagraphs,
 } from '../utils/CountingFunctions';
 
-interface countElementProps {
+interface CountElementProps {
   header: string;
   value: number;
 }
 
-function CountElement({ header, value }: countElementProps) {
+function CountElement({ header, value }: CountElementProps) {
   return (
     <Box>
       <Heading size='sm'>{header}:</Heading>
