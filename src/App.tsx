@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChangeEvent } from 'react';
 import WordCounter from './Components/WordCounter';
 import KeyWordCounter from './Components/KeyWordCounter';
 import { countWords, createWordHistogram } from './utils/CountingFunctions';
@@ -26,9 +27,8 @@ export default function App() {
   const sortedKeyWords: [string, number][] = keyWordValuePairs
     .sort(([, currValue], [, compValue]) => compValue - currValue)
     .slice(0, 4);
-
-  function handleTextInput(event: InputEvent): void {
-    const text: string = (event.target as HTMLInputElement).value;
+  function handleTextInput(event: ChangeEvent<HTMLTextAreaElement>): void {
+    const text: string = event.target.value;
     setUserText(text);
     setWordHistogram(createWordHistogram(text));
   }
