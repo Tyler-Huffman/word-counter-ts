@@ -21,17 +21,19 @@ export default function App() {
 
   // creates a sorted array of arrays with keyword histogram pairs
   //  with just top 4 keywords/values ie [['hello', 3]...]
-  const sortedKeywords: [string, number][] = Object.entries(wordHistogram)
-    .sort(([, a], [, b]) => b - a)
+
+  const keyWordValuePairs: [string, number][] = Object.entries(wordHistogram);
+  const sortedKeywords: [string, number][] = keyWordValuePairs
+    .sort(([, currValue], [, compValue]) => compValue - currValue)
     .slice(0, 4);
 
-  function handleTextInput(event: Event) {
+  function handleTextInput(event: InputEvent): void {
     const text: string = (event.target as HTMLInputElement).value;
     setUserText(text);
     setWordHistogram(createWordHistogram(text));
   }
 
-  function clearTextarea() {
+  function clearTextarea(): void {
     setUserText('');
     setWordHistogram({});
   }
@@ -77,7 +79,7 @@ export default function App() {
         w='80%'
         h='22.5rem'
         resize='none'
-        onChange={() => handleTextInput}
+        onChange={handleTextInput}
         focusBorderColor='rgb(49,130,206)'
       ></Textarea>
       <Flex justify='space-around' width='80%' marginBlock='25px'>

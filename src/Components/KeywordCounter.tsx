@@ -9,17 +9,27 @@ import {
 } from '@chakra-ui/react';
 import { countWords, calculatePercentage } from '../utils/CountingFunctions';
 
-export default function KeywordCounter({ sortedKeywords, userText }) {
-  const keywordElements = sortedKeywords.map((keyword, index) => {
+interface KeyWordCounterProps {
+  sortedKeywords: [string, number][];
+  userText: string;
+}
+
+export default function KeywordCounter({
+  sortedKeywords,
+  userText,
+}: KeyWordCounterProps) {
+  const keyWordElements = sortedKeywords.map((keyWordPair, index) => {
+    const currentWord: string = keyWordPair[0];
+    const currentValue: number = keyWordPair[1];
     return (
-      <Box key={keyword}>
+      <Box key={keyWordPair.toString()}>
         <Heading size='sm'>
-          {sortedKeywords.length > index ? sortedKeywords[index][0] : ''}
+          {sortedKeywords.length > index ? currentWord : ''}
         </Heading>
         <Text pt='2' fontSize='sm'>
           {sortedKeywords.length > index
-            ? `${sortedKeywords[index][1]} (${calculatePercentage(
-                sortedKeywords[index][1],
+            ? `${currentValue} (${calculatePercentage(
+                currentValue,
                 countWords(userText)
               )}%)`
             : ''}
@@ -39,7 +49,7 @@ export default function KeywordCounter({ sortedKeywords, userText }) {
       <CardBody>
         {sortedKeywords.length > 0 ? (
           <SimpleGrid columns={2} spacing='2rem'>
-            {keywordElements}
+            {keyWordElements}
           </SimpleGrid>
         ) : (
           <Text align='center' fontSize='3xl'>

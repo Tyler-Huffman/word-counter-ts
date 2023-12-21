@@ -1,5 +1,5 @@
 export function countWords(input: string): number {
-  let words = input
+  let words: string[] = input
     .split(/[^a-zA-Z]/g)
     .filter((word: string) => word !== '')
     .map((word: string) => word.trim());
@@ -16,20 +16,23 @@ export function countParagraphs(input: string): number {
   return paragraphs.length;
 }
 
-export function createWordHistogram(input: string) {
-  const inputCleaned = input.replace(/[^a-zA-Z\s]/g, '');
-  const words = inputCleaned
+export function createWordHistogram(input: string): {} {
+  const inputCleaned: string = input.replace(/[^a-zA-Z\s]/g, '');
+  const words: string[] = inputCleaned
     .split(/[^a-zA-Z]/g)
     .filter((word) => word !== '')
     .map((word) => word.toUpperCase());
-  const frequencyAnalysis = words.reduce((counts, curr) => {
+  const frequencyAnalysis = words.reduce(function (counts: {}, curr: string) {
     curr in counts ? counts[curr]++ : (counts[curr] = 1);
     return counts;
   }, {});
   return frequencyAnalysis;
 }
 
-export function calculatePercentage(wordCount, totalCount: number): number {
+export function calculatePercentage(
+  wordCount: number,
+  totalCount: number
+): number {
   const percent = (wordCount / totalCount) * 100;
   return Math.round(percent * 100) / 100;
 }
