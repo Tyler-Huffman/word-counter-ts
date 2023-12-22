@@ -1,8 +1,8 @@
 export function countWords(input: string): number {
   let words: string[] = input
     .split(/[^a-zA-Z]/g)
-    .filter((word: string) => word !== '')
-    .map((word: string) => word.trim());
+    .filter((word) => word !== '')
+    .map((word) => word.trim());
   return words.length;
 }
 
@@ -12,7 +12,7 @@ export function countSentences(input: string): number {
 }
 
 export function countParagraphs(input: string): number {
-  const paragraphs = input.split('\n').filter((word) => word !== '');
+  const paragraphs: string[] = input.split('\n').filter((word) => word !== '');
   return paragraphs.length;
 }
 
