@@ -31,7 +31,7 @@ function CountElement({ header, value }: CountElementProps) {
 
 export default function WordCounter({ userText }: { userText: string }) {
   return (
-    <Card w='35%' bg='rgb(49,130,206)' color='white'>
+    <Card w={{ base: 'sm', lg: '35%' }} bg='rgb(49,130,206)' color='white'>
       <CardHeader>
         <Heading textDecoration='underline' size='md'>
           Counts

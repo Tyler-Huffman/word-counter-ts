@@ -9,7 +9,6 @@ export default function Footer() {
       bg='rgb(49,130,206)'
       paddingBlock='0.25rem'
       color='white'
-      pos='fixed'
       left='0'
       bottom='0'
       justify='center'

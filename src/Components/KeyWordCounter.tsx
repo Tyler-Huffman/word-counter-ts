@@ -16,6 +16,7 @@ interface KeyWordCounterProps {
 
 export default function KeyWordCounter(props: KeyWordCounterProps) {
   const { sortedKeyWords, userText } = props;
+
   const keyWordElements = sortedKeyWords.map((keyWordPair, index) => {
     const currentWord: string = keyWordPair[0];
     const currentValue: number = keyWordPair[1];
@@ -35,7 +36,7 @@ export default function KeyWordCounter(props: KeyWordCounterProps) {
   });
 
   return (
-    <Card w='35%' bg='rgb(49,130,206)' color='white'>
+    <Card w={{ base: 'sm', lg: '35%' }} bg='rgb(49,130,206)' color='white'>
       <CardHeader>
         <Heading textDecoration='underline' size='md'>
           Keywords

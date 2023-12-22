@@ -26,6 +26,7 @@ export default function App() {
   const sortedKeyWords: [string, number][] = keyWordValuePairs
     .sort(([, currValue], [, compValue]) => compValue - currValue)
     .slice(0, 4);
+
   function handleTextInput(event: ChangeEvent<HTMLTextAreaElement>): void {
     const text: string = event.target.value;
     setUserText(text);
@@ -81,11 +82,17 @@ export default function App() {
         onChange={handleTextInput}
         focusBorderColor='rgb(49,130,206)'
       ></Textarea>
-      <Flex justify='space-around' width='80%' marginBlock='25px'>
+      <Flex
+        justify='space-around'
+        gap={{ base: '15px' }}
+        w={{ lg: '80%' }}
+        marginBlock='25px'
+        flexDir={{ lg: 'row', base: 'column' }}
+      >
         <WordCounter userText={userText} />
         <KeyWordCounter sortedKeyWords={sortedKeyWords} userText={userText} />
-        <Footer />
       </Flex>
+      <Footer />
     </Flex>
   );
 }
