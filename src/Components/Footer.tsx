@@ -10,6 +10,7 @@ export default function Footer() {
       paddingBlock='0.25rem'
       color='white'
       left='0'
+      pos={{ lg: 'fixed' }}
       bottom='0'
       justify='center'
       divider={<StackDivider />}

@@ -20,7 +20,8 @@ export default function KeyWordCounter(props: KeyWordCounterProps) {
   const keyWordElements = sortedKeyWords.map((keyWordPair, index) => {
     const currentWord: string = keyWordPair[0];
     const currentValue: number = keyWordPair[1];
-    const totalWords = countWords(userText);
+    const totalWords: number = countWords(userText);
+    const percentage: number = getPercentage(currentValue, totalWords);
     return (
       <Box key={keyWordPair.toString()}>
         <Heading size='sm'>
@@ -28,7 +29,7 @@ export default function KeyWordCounter(props: KeyWordCounterProps) {
         </Heading>
         <Text pt='2' fontSize='sm'>
           {sortedKeyWords.length > index
-            ? `${currentValue} (${getPercentage(currentValue, totalWords)}%)`
+            ? `${currentValue} (${percentage}%)`
             : ''}
         </Text>
       </Box>
