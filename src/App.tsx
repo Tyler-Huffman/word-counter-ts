@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, useRef, ChangeEvent } from 'react';
 import WordCounter from './Components/WordCounter';
 import KeyWordCounter from './Components/KeyWordCounter';
 import { countWords, createWordHistogram } from './utils/CountingFunctions';
@@ -16,6 +16,7 @@ import Footer from './Components/Footer';
 export default function App() {
   const [userText, setUserText] = useState('');
   const [wordHistogram, setWordHistogram] = useState({});
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const toast = useToast();
 
@@ -36,6 +37,7 @@ export default function App() {
   function clearTextarea(): void {
     setUserText('');
     setWordHistogram({});
+    if (textareaRef.current != null) textareaRef.current.focus();
   }
 
   function copyWordCountToClipboard(): void {
@@ -73,6 +75,7 @@ export default function App() {
         </Box>
       </Flex>
       <Textarea
+        ref={textareaRef}
         autoFocus
         placeholder='TYPE/PASTE HERE'
         value={userText}

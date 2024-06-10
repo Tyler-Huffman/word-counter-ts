@@ -24,14 +24,14 @@ export function createWordHistogram(input: string): WordCount {
     .split(/[^a-zA-Z]/g)
     .filter((word) => word !== '')
     .map((word) => word.toUpperCase());
-  const frequencyAnalysis = words.reduce(function (
-    counts: WordCount,
-    curr: string
-  ) {
-    curr in counts ? counts[curr]++ : (counts[curr] = 1);
-    return counts;
-  },
-  {});
+  const frequencyAnalysis = Object.create(null);
+  for (const word of words) {
+    if (word in frequencyAnalysis) {
+      frequencyAnalysis[word] += 1;
+    } else {
+      frequencyAnalysis[word] = 1;
+    }
+  }
   return frequencyAnalysis;
 }
 
